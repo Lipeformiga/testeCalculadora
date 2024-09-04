@@ -27,6 +27,6 @@ public class StringUtilsTest {
     @Test
     public void testeToUpperCase(){
         assertEquals("ARARA",utils.toUpperCase("arara"));
+        assertNull(utils.toUpperCase(""));
     }
-
 }
