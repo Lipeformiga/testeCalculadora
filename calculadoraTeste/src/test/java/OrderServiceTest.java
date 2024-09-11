@@ -15,6 +15,7 @@ public class OrderServiceTest {
     public void setUp(){
         orderService = new OrderService();
         orders = new ArrayList<>();
+        orders = orderService.getAllOrders();
     }
     @AfterEach
     public void tearDown(){
@@ -24,14 +25,12 @@ public class OrderServiceTest {
     @Test
     public void addOrderTest(){
         orderService.addOrder("item1");
-        orders = orderService.getAllOrders();
         assertEquals(1,orders.size());
         assertTrue(orders.contains("item1"));
     }
     @Test
     public void removeOrderTest(){
         orderService.addOrder("item1");
-        orders = orderService.getAllOrders();
         orderService.remover("item1");
         assertEquals(0,orders.size());
         assertFalse(orders.contains("item1"));
@@ -40,7 +39,6 @@ public class OrderServiceTest {
     public void clearAllOrders(){
         orderService.addOrder("item1");
         orderService.addOrder("item2");
-        List<String> orders = orderService.getAllOrders();
         orderService.clearAllOrders();
         assertEquals(0,orders.size());
         assertFalse(orders.contains("item1"));
@@ -51,7 +49,6 @@ public class OrderServiceTest {
     public void testGetAllOrders() {
         orderService.addOrder("Pedido 1");
         orderService.addOrder("Pedido 2");
-        orders = orderService.getAllOrders();
         assertEquals(2, orders.size());
         assertTrue(orders.contains("Pedido 1"));
         assertTrue(orders.contains("Pedido 2"));
